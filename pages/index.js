@@ -1,5 +1,11 @@
+// This is the updated index.js file.
+// It now imports the new LoginPage component from the login.js file.
+
 import React, { useState } from 'react';
-// The import for './styles.css' has been removed as all CSS is now inline.
+
+// Import the LoginPage component from your other file.
+// Note: Make sure your file path is correct. If login.js is in the same directory, use './login'.
+import LoginPage from './login'; 
 
 // Inline SVG Icons for a more polished look
 const BoatIcon = () => (
@@ -725,88 +731,6 @@ const TestimonialCard = ({ text, author }) => {
     <div className="testimonial-card">
       <p className="testimonial-text">"{text}"</p>
       <p className="testimonial-author">{author}</p>
-    </div>
-  );
-};
-
-// A basic Login Page for demonstration
-const LoginPage = ({ setActivePage }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // In a real app, you would handle authentication here.
-    console.log('Login attempt with:', { email, password });
-    setMessage('This is a demo login. A real app would authenticate here.');
-  };
-
-  const closeMessage = () => {
-    setMessage('');
-  };
-
-  return (
-    <div className="login-page-container">
-      {/* Custom Message Box */}
-      {message && (
-        <div className="message-box-overlay">
-          <div className="message-box">
-            <p className="message-text">{message}</p>
-            <button onClick={closeMessage} className="message-button">
-              OK
-            </button>
-          </div>
-        </div>
-      )}
-      
-      <div className="login-form-card">
-        <h2 className="login-form-title">Login to MemoryDeck</h2>
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label className="form-label" htmlFor="email">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="form-input"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label className="form-label" htmlFor="password">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="form-input"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="form-button"
-          >
-            Login
-          </button>
-        </form>
-        <p className="signup-text">
-          Don't have an account? <a href="#">Sign Up</a>
-        </p>
-        <div className="back-link-container">
-          <button onClick={() => setActivePage('landing')} className="back-link">
-            ← Back to Home
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
